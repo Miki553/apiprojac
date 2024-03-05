@@ -9,7 +9,10 @@ import{router as vote} from "./api/image";
 
 export const app = express();
 const cors = require('cors');
-app.use(cors({origin:"*"}));
+app.use(cors({
+    origin: "*", 
+    })
+);
 app.use(bodyParser.text());
 app.use(bodyParser.json());
 
