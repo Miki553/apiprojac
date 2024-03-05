@@ -15,4 +15,4 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 3000
-CMD ["npx","ts-node","server.ts"]
+CMD ["npx","ts-node","serve.ts"]
