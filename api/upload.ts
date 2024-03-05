@@ -1,0 +1,79 @@
+import express from "express";
+import path from "path";
+import multer from "multer";
+
+export const router = express.Router();
+
+router.get("/",(req,res)=>{
+    res.send("Upload");
+});
+
+
+import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL,deleteObject } from "firebase/storage";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyC-NHZoh1twNsTs0PHjkCIydxcHISrCqEE",
+    authDomain: "api-test-94f3b.firebaseapp.com",
+    projectId: "api-test-94f3b",
+    storageBucket: "api-test-94f3b.appspot.com",
+    messagingSenderId: "291742907529",
+    appId: "1:291742907529:web:ea2f1dc03bcbde0462da58",
+    measurementId: "G-P99T31SED3"
+};
+
+
+initializeApp(firebaseConfig);
+const storage = getStorage();
+
+
+class FileMiddleware {
+    filename = "";
+    public readonly diskLoader = multer({
+        storage: multer.memoryStorage(),
+        limits: {
+            fileSize: 67108864 
+        }
+    });
+}
+const fileupload = new FileMiddleware();
+
+
+//add
+router.post("/", fileupload.diskLoader.single("file"), async (req, res) => {
+    const filename = Math.round(Math.random() * 100000) + '.png';
+    const storageRef = ref(storage, "/images/" + filename);
+    const metadata = { contentType: req.file!.mimetype };
+    const snapshot = await uploadBytesResumable(storageRef, req.file!.buffer, metadata);
+    const url = await getDownloadURL(snapshot.ref);
+    res.status(200).json({
+        filename: filename,
+        url :url
+    });
+});
+
+
+
+//delete
+router.delete("/:name", async (req, res) => {
+  const filenameToDelete =req.params.name;
+  const fileRef = ref(storage, "/images/"+ filenameToDelete);
+  try {
+    await deleteObject(fileRef);
+    res.status(200).json({ message: `File ${filenameToDelete} has been deleted successfully.` });
+  } catch (error) {
+    console.error(`Error deleting file ${filenameToDelete}:`, error);
+    res.status(500).json({ error: 'An error occurred while deleting the file.' });
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
