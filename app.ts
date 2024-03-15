@@ -4,15 +4,13 @@ import bodyParser from "body-parser";
 import{router as user} from "./api/user";
 import{router as upload} from "./api/upload";
 import{router as image} from "./api/image";
-import{router as vote} from "./api/image";
+import{router as vote} from "./api/vote";
+import{router as statistics} from "./api/statistics";
 
 
 export const app = express();
 const cors = require('cors');
-app.use(cors({
-    origin: "*", 
-    })
-);
+app.use(cors({origin:"*"}));
 app.use(bodyParser.text());
 app.use(bodyParser.json());
 
@@ -21,6 +19,7 @@ app.use("/user",user);
 app.use("/upload",upload);
 app.use("/image",image);
 app.use("/vote",vote);
+app.use("/statistics",statistics);
 
 
 app.use("/",(req,res) => {
