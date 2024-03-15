@@ -7,12 +7,6 @@ import { ImageGetResponse } from '../model/trip-get-res';
 //router 
 export const router = express.Router();
 
-
-
-// router.get("/",(req,res)=>{
-//     res.send("Method GET in vote.ts");
-// });
-
 router.get("/",(req,res)=>{
     const sql = "select * from vote"
     conn.query(sql,(err,result)=>{
@@ -24,3 +18,19 @@ router.get("/",(req,res)=>{
     });
 });
 
+//add
+router.post("/", (req, res) => {
+    let img_id = req.body.id;
+    let sql ="INSERT INTO `vote`(`img_id`) VALUES (?)";
+    sql = mysql.format(sql, [
+      img_id,
+    ]);
+    conn.query(sql, (err, result) => {
+      if (err) throw err;
+      res
+        .status(201)
+        .json({ affected_row: result.affectedRows, last_idx: result.insertId });
+    });
+
+
+  });

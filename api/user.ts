@@ -32,8 +32,6 @@ router.get("/:email",(req,res)=>{
     });
 });
 
-
-
 // add
 router.post("/", (req, res) => {
     let user: TripGetResponse = req.body;
@@ -56,26 +54,7 @@ router.post("/", (req, res) => {
         .status(201)
         .json({ affected_row: result.affectedRows, last_idx: result.insertId });
     });
-  });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+});
 
 router.post("/",(req,res)=>{
     const body = req.body;
@@ -85,19 +64,6 @@ router.post("/",(req,res)=>{
         text : "Method Post in trip.ts : " + JSON.stringify(body)
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // router.get("/",(req,res)=>{
 //     if(req.query.id){
@@ -138,9 +104,6 @@ router.get("/:id",(req,res)=>{
 
 
 });
-
-
-
 
 router.get("/search/fields",(req,res)=>{
     const id = req.query.id;

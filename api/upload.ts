@@ -53,7 +53,6 @@ router.post("/", fileupload.diskLoader.single("file"), async (req, res) => {
 });
 
 
-
 //delete
 router.delete("/:name", async (req, res) => {
   const filenameToDelete =req.params.name;
