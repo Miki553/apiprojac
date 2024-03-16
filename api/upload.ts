@@ -13,7 +13,7 @@ import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL,deleteObject } from "firebase/storage";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC-NHZoh1twNsTs0PHjkCIydxcHISrCqEE",
+    apiKey: "AIzaSyDB0wentj8Igqan_Bpe7g-MOEvCSSiSnt0",
     authDomain: "api-test-94f3b.firebaseapp.com",
     projectId: "api-test-94f3b",
     storageBucket: "api-test-94f3b.appspot.com",
