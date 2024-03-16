@@ -162,6 +162,32 @@ SET
     });
 });
 
+
+router.put("/updaterank2", (req, res) => {
+    let sql = `
+    UPDATE statistics AS s
+JOIN (
+    SELECT
+        s1.statistics_ID,
+        RANK() OVER (ORDER BY s1.score DESC, s1.statistics_ID ASC) AS new_rank
+    FROM
+        statistics s1
+    WHERE DATE(s1.dateTime) = DATE_SUB(CURRENT_DATE, INTERVAL 1 DAY)
+) AS ranked_stats ON s.statistics_ID = ranked_stats.statistics_ID
+SET
+    s.rank = CASE
+        WHEN s.rank = 999 THEN 999
+        ELSE ranked_stats.new_rank
+    END;
+    `;
+    conn.query(sql, (err, result) => {
+      if (err) throw err;
+      res
+        .status(201)
+        .json({ affected_row: result.affectedRows });
+    });
+});
+
 //get chat
 router.get("/chat/:id",(req,res)=>{
     let id = req.params.id;
