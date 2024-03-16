@@ -10,6 +10,7 @@ import{router as statistics} from "./api/statistics";
 
 export const app = express();
 const cors = require('cors');
+
 app.use(cors({origin:"*"}));
 app.use(bodyParser.text());
 app.use(bodyParser.json());
