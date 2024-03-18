@@ -1,0 +1,108 @@
+body{
+    // background-color: rgb(155, 155, 155);
+    background-image: url('../../../assets/bg5.gif');
+
+    // width: 100vw;
+    width: 100%;
+    // overflow: hidden;
+    height: auto;
+
+}
+.container-fluid{
+    background-color: rgb(219, 206, 206);
+    padding: 20px;
+    margin-top: 3%;
+    width: 90%;
+    // height: 80%;
+    border-radius: 10px;
+    
+}
+
+.r1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    border-radius: 30px;
+    height: 100px;
+    margin-bottom: 1%;
+}
+.img5{
+    // margin-left: 10px;
+}
+.img5 + .img5{
+    margin-left: 20px;
+}
+.name{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.Ranking{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+.num{
+    font-size: 30px;
+    font-weight: bold;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rrak{
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    background-color: rgb(121, 121, 121);
+    height: 8%;
+    cursor: pointer;
+    border-radius: 20px;
+    
+}
+.rrak:hover{
+    transform: scale(1.08); 
+}
+.rrak:nth-child(odd) {
+    background-color: rgb(121, 121, 121);
+}
+
+.rrak:nth-child(even) {
+    background-color: rgb(74, 74, 74);
+}
+.picshow img{
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    
+}
+.picshow{
+    width: 50%; 
+    height: 270px;
+    margin-left: 28%;
+}
+.title{
+    
+    // overflow: hidden;
+    font-size: 30px;
+    font-weight: bold;
+
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.rowrank{
+    margin-bottom: 20px;
+    background-color: rgb(169, 170, 170);
+    border-radius: 20px;
+}
+.pictop10{
+    background-color: aliceblue;
+    display: flex; 
+    margin-right: auto;
+    
+
+}
